@@ -68,8 +68,10 @@
 /* BEM
  -------------------------- */
 @mixin b($block) {
+  // !global 将局部变量扩展到全局
   $B: $namespace+'-'+$block !global;
 
+  // #{$B}插值语句，将$B变量扩展为字符串，即.el-xxx
   .#{$B} {
     @content;
   }
@@ -162,6 +164,7 @@
   }
 }
 
+// 在当前选择器中增加 .is-xxx 类
 @mixin when($state) {
   @at-root {
     &.#{$state-prefix + $state} {
