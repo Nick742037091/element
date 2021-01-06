@@ -68,15 +68,17 @@
 /* BEM
  -------------------------- */
 @mixin b($block) {
-  // !global 将局部变量扩展到全局
+  /* !global 将局部变量扩展到全局 */  
   $B: $namespace+'-'+$block !global;
+  
 
-  // #{$B}插值语句，将$B变量扩展为字符串，即.el-xxx
+  /* #{$B}插值语句，将$B变量扩展为字符串，即.el-xxx */
   .#{$B} {
     @content;
   }
 }
 
+/* 在当前选择器上添加元素 */
 @mixin e($element) {
   $E: $element !global;
   $selector: &;
@@ -102,6 +104,7 @@
   }
 }
 
+/* 在当前选择器上添加修饰器 */
 @mixin m($modifier) {
   $selector: &;
   $currentSelector: "";

@@ -20,7 +20,7 @@
         'is-checked': model === label
       }"
     >
-      <span class="el-radio__inner"></span>
+      <!-- <span class="el-radio__inner"></span> -->
       <input
         ref="radio"
         class="el-radio__original"
@@ -63,6 +63,7 @@
     componentName: 'ElRadio',
 
     props: {
+      // 默认情况下，v-model会把value作为prop，把input作为event
       value: {},
       label: {},
       disabled: Boolean,
@@ -78,6 +79,7 @@
     },
     computed: {
       isGroup() {
+        // 遍历父组件查找是否有ElRadioGroup组件，查找到则将其设置为_radioGroup
         let parent = this.$parent;
         while (parent) {
           if (parent.$options.componentName !== 'ElRadioGroup') {
@@ -95,6 +97,8 @@
         },
         set(val) {
           if (this.isGroup) {
+            // Emitter mixin的dispatch 方法
+            // 调用ElRadioGroup父组件的input方法，即给父组件value赋值
             this.dispatch('ElRadioGroup', 'input', [val]);
           } else {
             this.$emit('input', val);

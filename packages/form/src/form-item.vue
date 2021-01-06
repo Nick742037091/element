@@ -51,6 +51,7 @@
 
     mixins: [emitter],
 
+    // 注入依赖，方便子组件引用
     provide() {
       return {
         elFormItem: this

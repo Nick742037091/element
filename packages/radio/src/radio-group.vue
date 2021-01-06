@@ -59,6 +59,7 @@
       // 当radioGroup没有默认选项时，第一个可以选中Tab导航
       const radios = this.$el.querySelectorAll('[type=radio]');
       const firstLabel = this.$el.querySelectorAll('[role=radio]')[0];
+      // 通过call调用数组的some方法，this传入类数组对象
       if (![].some.call(radios, radio => radio.checked) && firstLabel) {
         firstLabel.tabIndex = 0;
       }

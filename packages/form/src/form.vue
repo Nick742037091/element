@@ -14,6 +14,7 @@
 
     componentName: 'ElForm',
 
+    // 注入依赖，方便子组件引用
     provide() {
       return {
         elForm: this
