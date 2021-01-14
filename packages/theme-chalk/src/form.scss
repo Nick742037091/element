@@ -3,11 +3,15 @@
 @import "common/var";
 
 @include b(form) {
+  /*设置标题宽度后，左侧标题默认右对齐*/
+
+  /*设置左侧标题左对齐*/
   @include m(label-left) {
     & .el-form-item__label {
       text-align: left;
     }
   }
+  /*设置标题单独占有一行，左对齐*/
   @include m(label-top) {
     & .el-form-item__label {
       float: none;

@@ -117,6 +117,8 @@
         if (this.form.labelPosition === 'top' || this.form.inline) return ret;
         if (!label && !this.labelWidth && this.isNested) return ret;
         const labelWidth = this.labelWidth || this.form.labelWidth;
+
+        // 标题设置为float情况下，自动计算marginLeft使content内容不会换行显示
         if (labelWidth === 'auto') {
           if (this.labelWidth === 'auto') {
             ret.marginLeft = this.computedLabelWidth;

@@ -1,3 +1,4 @@
+// 监控examples/pages/template，若有新的模板，自动生成各种语言的版本
 const path = require('path');
 const templates = path.resolve(process.cwd(), './examples/pages/template');
 

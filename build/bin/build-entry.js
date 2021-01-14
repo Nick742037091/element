@@ -1,3 +1,4 @@
+// 根据Components.json组件生成插件入口文件src/index.js
 var Components = require('../../components.json');
 var fs = require('fs');
 var render = require('json-templater/string');
@@ -77,13 +78,14 @@ ComponentNames.forEach(name => {
     package: name
   }));
 
+  // 列表中的组件不进行全局注册，但挂载到Vue原型中
   if (['Loading', 'MessageBox', 'Notification', 'Message', 'InfiniteScroll'].indexOf(componentName) === -1) {
     installTemplate.push(render(INSTALL_COMPONENT_TEMPLATE, {
       name: componentName,
       component: name
     }));
   }
-
+  // 除了loading，其他组件可以按需导出，所以要放在export default中
   if (componentName !== 'Loading') listTemplate.push(`  ${componentName}`);
 });
 

@@ -7,6 +7,7 @@ var fontFile = fs.readFileSync(path.resolve(__dirname, '../../packages/theme-cha
 var nodes = postcss.parse(fontFile).nodes;
 var classList = [];
 
+// 遍历出icon.scss中:before伪元素的类，写入icon.json
 nodes.forEach((node) => {
   var selector = node.selector || '';
   var reg = new RegExp(/\.el-icon-([^:]+):before/);

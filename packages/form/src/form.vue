@@ -24,12 +24,16 @@
     props: {
       model: Object,
       rules: Object,
+      // 在labelWidth设置为固定宽度时才生效
       labelPosition: String,
+      // 一般设置为auto,标题和表单元素默认会添加间隔
+      // 在form设置为固定宽度，form-item设置为auto时有可能会导致表单元素换行显示
       labelWidth: String,
       labelSuffix: {
         type: String,
         default: ''
       },
+      // 设置表单元素为行内显示，若表单元素超长会换行显示
       inline: Boolean,
       inlineMessage: Boolean,
       statusIcon: Boolean,

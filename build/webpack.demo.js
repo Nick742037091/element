@@ -84,6 +84,7 @@ const webpackConfig = {
             }
           },
           {
+            // md解析器，可嵌入vue代码并编译执行
             loader: path.resolve(__dirname, './md-loader/index.js')
           }
         ]

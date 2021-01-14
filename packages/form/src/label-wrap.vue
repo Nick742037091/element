@@ -15,6 +15,7 @@ export default {
       const autoLabelWidth = this.elForm.autoLabelWidth;
       const style = {};
       if (autoLabelWidth && autoLabelWidth !== 'auto') {
+        // 当labelWidth为auto时
         const marginLeft = parseInt(autoLabelWidth, 10) - this.computedWidth;
         if (marginLeft) {
           style.marginLeft = marginLeft + 'px';
