@@ -20,7 +20,7 @@
         'is-checked': model === label
       }"
     >
-      <!-- <span class="el-radio__inner"></span> -->
+      <span class="el-radio__inner"></span>
       <input
         ref="radio"
         class="el-radio__original"

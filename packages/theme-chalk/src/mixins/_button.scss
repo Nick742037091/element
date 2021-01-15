@@ -38,7 +38,7 @@
 
   &:hover,
   &:focus {
-    /* mix为颜色混合函数，与白色混合，可呈现聚焦效果 */
+    /* mix为颜色混合函数，与白色混合，相当于添加一层蒙层 */
     background: mix($--color-white, $background-color, $--button-hover-tint-percent);
     border-color: mix($--color-white, $border-color, $--button-hover-tint-percent);
     color: $color;

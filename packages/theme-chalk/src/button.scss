@@ -77,6 +77,7 @@
     &:hover,
     &:focus {
       color: $--button-disabled-font-color;
+      /* 显示不可点击鼠标图标，但实际上仍可以点击 */
       cursor: not-allowed;
       background-image: none;
       background-color: $--button-disabled-background-color;
@@ -100,8 +101,10 @@
 
   @include when(loading) {
     position: relative;
+    // 指定不触发鼠标事件
     pointer-events: none;
 
+    /* 添加一层蒙层 */
     &:before {
       pointer-events: none;
       content: '';
@@ -188,6 +191,7 @@
   vertical-align: middle;
 
   & > .el-button {
+    // 设置为浮动布局，使按键不会被换行换行符或者空白符隔开
     float: left;
     position: relative;
     & + .el-button {

@@ -1,3 +1,4 @@
+/* 设置不可选择文本 */ 
 @mixin utils-user-select($value) {
   -moz-user-select: $value;
   -webkit-user-select: $value;
@@ -32,6 +33,7 @@
   }
 }
 
+// 内容超长隐藏，文本超长显示省略符，文本不会换行
 @mixin utils-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
