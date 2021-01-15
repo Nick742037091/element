@@ -13,6 +13,7 @@
   border: $--border-base;
   border-color: $--button-default-border-color;
   color: $--button-default-font-color;
+  /* 隐藏默认按键样式 */
   -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;

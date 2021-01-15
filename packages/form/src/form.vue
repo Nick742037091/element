@@ -28,14 +28,19 @@
       labelPosition: String,
       // 一般设置为auto,标题和表单元素默认会添加间隔
       // 在form设置为固定宽度，form-item设置为auto时有可能会导致表单元素换行显示
+      // (如行内元素宽度为100%，form-item设置为auto，则margin-left为0，由于标题设置为float而脱离文档，
+      // 100%宽度即为一行宽度，所以会导致超长换行)
       labelWidth: String,
       labelSuffix: {
         type: String,
         default: ''
       },
       // 设置表单元素为行内显示，若表单元素超长会换行显示
+      // (如行内元素宽度为100%，由于设置为行内元素，则margin-left为0，由于标题设置为float而脱离文档，
+      // 100%宽度即为一行宽度，所以会导致超长换行)
       inline: Boolean,
       inlineMessage: Boolean,
+      // 对于input输入框才有效
       statusIcon: Boolean,
       showMessage: {
         type: Boolean,
@@ -122,6 +127,7 @@
         if (typeof callback !== 'function' && window.Promise) {
           promise = new window.Promise((resolve, reject) => {
             callback = function(valid) {
+              // promise只传递校验成功或失败
               valid ? resolve(valid) : reject(valid);
             };
           });
@@ -134,6 +140,7 @@
           callback(true);
         }
         let invalidFields = {};
+        // 分布校验每个字段
         this.fields.forEach(field => {
           field.validate('', (message, field) => {
             if (message) {
@@ -141,6 +148,7 @@
             }
             invalidFields = objectAssign({}, invalidFields, field);
             if (typeof callback === 'function' && ++count === this.fields.length) {
+              // 统一进行一次回调
               callback(valid, invalidFields);
             }
           });

@@ -8,9 +8,9 @@
 
 :::demo 在 Form 组件中，每一个表单域由一个 Form-Item 组件构成，表单域中可以放置各种类型的表单控件，包括 Input、Select、Checkbox、Radio、Switch、DatePicker、TimePicker
 ```html
-<el-form ref="form" :model="form" label-width="auto" inline>
+<el-form ref="form" :model="form" label-width="80px">
   <el-form-item label="活动名称">
-    <el-input v-model="form.name"></el-input>
+    <el-input v-model="form.name"></el-input>    
   </el-form-item>
   <el-form-item label="活动区域">
     <el-select v-model="form.region" placeholder="请选择活动区域">
@@ -171,8 +171,8 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 
 :::demo Form 组件提供了表单验证的功能，只需要通过 `rules` 属性传入约定的验证规则，并将 Form-Item 的 `prop` 属性设置为需校验的字段名即可。校验规则参见 [async-validator](https://github.com/yiminghe/async-validator)
 ```html
-<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-  <el-form-item label="活动名称" prop="name">
+<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" status-icon >
+  <el-form-item label="活动名称" prop="name" required >
     <el-input v-model="ruleForm.name"></el-input>
   </el-form-item>
   <el-form-item label="活动区域" prop="region">
@@ -181,7 +181,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
       <el-option label="区域二" value="beijing"></el-option>
     </el-select>
   </el-form-item>
-  <el-form-item label="活动时间" required>
+  <el-form-item label="活动时间" required >
     <el-col :span="11">
       <el-form-item prop="date1">
         <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
@@ -261,14 +261,16 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
     },
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+        this.$refs[formName].validate((valid,invalidFields) => {
+          console.log(valid)
+          console.log(invalidFields)
+          // if (valid) {
+          //   alert('submit!');
+          // } else {
+          //   console.log('error submit!!');
+          //   return false;
+          // }
+        });       
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

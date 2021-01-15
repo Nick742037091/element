@@ -114,11 +114,15 @@
       contentStyle() {
         const ret = {};
         const label = this.label;
+
+        // 非以下三种情况，自动计算marginLeft使content内容不会换行显示：
+        // 1、labelPosition为top
+        // 2、行内表单
+        // 3、标题为空且labelWidth为空且为嵌套表单组件
+        // 若labelWidth设置为空，也可能导致换行，因此一版设置为auto
         if (this.form.labelPosition === 'top' || this.form.inline) return ret;
         if (!label && !this.labelWidth && this.isNested) return ret;
         const labelWidth = this.labelWidth || this.form.labelWidth;
-
-        // 标题设置为float情况下，自动计算marginLeft使content内容不会换行显示
         if (labelWidth === 'auto') {
           if (this.labelWidth === 'auto') {
             ret.marginLeft = this.computedLabelWidth;
@@ -217,6 +221,7 @@
           this.validateMessage = errors ? errors[0].message : '';
 
           callback(this.validateMessage, invalidFields);
+          // 触发form组件事件回调
           this.elForm && this.elForm.$emit('validate', this.prop, !errors, this.validateMessage || null);
         });
       },
@@ -237,7 +242,6 @@
         }
 
         let prop = getPropByPath(model, path, true);
-
         this.validateDisabled = true;
         if (Array.isArray(value)) {
           prop.o[prop.k] = [].concat(this.initialValue);
@@ -263,6 +267,7 @@
         return [].concat(selfRules || formRules || []).concat(requiredRule);
       },
       getFilteredRule(trigger) {
+        // 通过触发方式过滤规则
         const rules = this.getRules();
 
         return rules.filter(rule => {

@@ -47,6 +47,7 @@
     margin-bottom: 0;
   }
 
+  // 隐藏输入框后置图标
   & .el-input__validateIcon {
     display: none;
   }
@@ -158,11 +159,13 @@
         border-color: transparent;
       }
     }
+    // 设置输入框后置图标为红色
     .el-input__validateIcon {
       color: $--color-danger;
     }
   }
 
+  // 显示输入框后置图标
   @include m(feedback) {
     .el-input__validateIcon {
       display: inline-block;
