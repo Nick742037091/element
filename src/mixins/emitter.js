@@ -11,7 +11,7 @@ function broadcast(componentName, eventName, params) {
 }
 export default {
   methods: {
-    // 向上查找对应组件名的父组件，并调用特定事件
+    // 向上查找对应组件名的父组件，并通过父组件emit特定事件
     dispatch(componentName, eventName, params) {
       var parent = this.$parent || this.$root;
       var name = parent.$options.componentName;

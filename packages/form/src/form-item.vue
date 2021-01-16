@@ -283,6 +283,7 @@
         this.validate('blur');
       },
       onFieldChange() {
+        // TODO 回调函数传递的参数没有使用？
         if (this.validateDisabled) {
           this.validateDisabled = false;
           return;

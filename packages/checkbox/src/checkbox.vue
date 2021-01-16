@@ -83,12 +83,13 @@
     computed: {
       model: {
         get() {
+          // 多选框为checkbox-group的value，单选框为组件的value
           return this.isGroup
             ? this.store : this.value !== undefined
               ? this.value : this.selfModel;
         },
 
-        set(val) {
+        set(val) {          
           if (this.isGroup) {
             this.isLimitExceeded = false;
             (this._checkboxGroup.min !== undefined &&
@@ -98,7 +99,7 @@
             (this._checkboxGroup.max !== undefined &&
               val.length > this._checkboxGroup.max &&
               (this.isLimitExceeded = true));
-
+            debugger
             this.isLimitExceeded === false &&
             this.dispatch('ElCheckboxGroup', 'input', [val]);
           } else {
@@ -118,6 +119,7 @@
         }
       },
 
+      // 通过查找父组件判断是否check-group下的组件
       isGroup() {
         let parent = this.$parent;
         while (parent) {
@@ -198,6 +200,7 @@
         this.$emit('change', value, ev);
         this.$nextTick(() => {
           if (this.isGroup) {
+          // 直接回调给checkbox-group的@change函数
             this.dispatch('ElCheckboxGroup', 'change', [this._checkboxGroup.value]);
           }
         });
@@ -215,6 +218,7 @@
 
     watch: {
       value(value) {
+        // 用于校验
         this.dispatch('ElFormItem', 'el.form.change', value);
       }
     }

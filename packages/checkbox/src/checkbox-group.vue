@@ -35,6 +35,8 @@
 
     watch: {
       value(value) {
+        // 用于校验
+        // TODO 这里为什么要穿[value]数组？
         this.dispatch('ElFormItem', 'el.form.change', [value]);
       }
     }

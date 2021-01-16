@@ -171,6 +171,7 @@
         background-color: $--checkbox-checked-background-color;
         border-color: $--checkbox-checked-input-border-color;
 
+        /* 插入横线 */
         &::before {
           content: '';
           position: absolute;
@@ -191,6 +192,7 @@
   }
   @include e(inner) {
     display: inline-block;
+    // ::before和::after定位
     position: relative;
     border: $--checkbox-input-border;
     border-radius: $--checkbox-border-radius;
@@ -209,6 +211,7 @@
     &::after {
       box-sizing: content-box;
       content: "";
+      /* 用边框模拟打钩图标 */
       border: 1px solid $--checkbox-checked-icon-color;
       border-left: 0;
       border-top: 0;

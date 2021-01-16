@@ -51,6 +51,7 @@
     },
 
     created() {
+      // 监听radio子组件的状态变化
       this.$on('handleChange', value => {
         this.$emit('change', value);
       });
