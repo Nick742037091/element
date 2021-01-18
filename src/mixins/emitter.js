@@ -24,6 +24,7 @@ export default {
         }
       }
       if (parent) {
+        // 由于这里使用了concat，所以传递进来的params如果为数组，需要再嵌套一层作为二级数组
         parent.$emit.apply(parent, [eventName].concat(params));
       }
     },
