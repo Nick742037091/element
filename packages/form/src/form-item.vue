@@ -288,7 +288,7 @@
           this.validateDisabled = false;
           return;
         }
-
+        // 表单数据变化进行校验
         this.validate('change');
       },
       updateComputedLabelWidth(width) {

@@ -9,6 +9,7 @@ function broadcast(componentName, eventName, params) {
     }
   });
 }
+// 用于$emit指定子组件或父组件的事件
 export default {
   methods: {
     // 向上查找对应组件名的父组件，并通过父组件emit特定事件

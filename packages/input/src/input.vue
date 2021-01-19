@@ -157,6 +157,7 @@
         type: [Boolean, Object],
         default: false
       },
+      // 利用浏览器自带的填充功能，表单项name为username或password等有效
       autocomplete: {
         type: String,
         default: 'off'

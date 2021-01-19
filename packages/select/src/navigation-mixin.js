@@ -24,12 +24,15 @@ export default {
 
   methods: {
     navigateOptions(direction) {
+      // 若未显示菜单，触发菜单显示
       if (!this.visible) {
         this.visible = true;
         return;
       }
+      // 菜单列表为空
       if (this.options.length === 0 || this.filteredOptionsCount === 0) return;
       if (!this.optionsAllDisabled) {
+        // 切换菜单项
         if (direction === 'next') {
           this.hoverIndex++;
           if (this.hoverIndex === this.options.length) {

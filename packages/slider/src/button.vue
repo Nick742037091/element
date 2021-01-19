@@ -89,6 +89,7 @@
         return this.$parent.precision;
       },
 
+      // 使用绝对布局和百分比简化运算
       currentPosition() {
         return `${ (this.value - this.min) / (this.max - this.min) * 100 }%`;
       },
@@ -224,6 +225,7 @@
         const steps = Math.round(newPosition / lengthPerStep);
         let value = steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min;
         value = parseFloat(value.toFixed(this.precision));
+        // 通过value响应式修改元素位置
         this.$emit('input', value);
         this.$nextTick(() => {
           this.displayTooltip();

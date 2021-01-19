@@ -22,13 +22,13 @@ import { kebabCase } from 'element-ui/src/utils/util';
  */
 export default {
   mounted() {
+    // 添加属性修改提示
     if (process.env.NODE_ENV === 'production') return;
     if (!this.$vnode) return;
     const { props = {}, events = {} } = this.getMigratingConfig();
     const { data, componentOptions } = this.$vnode;
     const definedProps = data.attrs || {};
     const definedEvents = componentOptions.listeners || {};
-
     for (let propName in definedProps) {
       propName = kebabCase(propName); // compatible with camel case
       if (props[propName]) {

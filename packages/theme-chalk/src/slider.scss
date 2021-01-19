@@ -95,7 +95,9 @@
     width: $--slider-button-wrapper-size;
     position: absolute;
     z-index: 1001;
+    // 调整垂直位置，使元素几何中心和对应位置对齐
     top: $--slider-button-wrapper-offset;
+    // 已设置left:xx%,translateX(-50%)使元素几何中心和对应位置对齐
     transform: translateX(-50%);
     background-color: transparent;
     text-align: center;
@@ -104,16 +106,19 @@
     @include utils-vertical-center;
 
     .el-tooltip {
+      // 将元素水平居中
       vertical-align: middle;
       display: inline-block;
     }
 
     &:hover,
     &.hover {
+      // 显示可抓取图标
       cursor: grab;
     }
 
     &.dragging {
+      // 显示抓取图标
       cursor: grabbing;
     }
   }
